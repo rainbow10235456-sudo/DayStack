@@ -1,0 +1,5 @@
+import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
+import { Layout } from './components/layout'
+import { BookmarksPage, Dashboard, initialBookmarks, initialNotes, initialReminders, initialTasks, initialVideos, NotesPage, RemindersPage, SettingsPage, TasksPage, VideosPage } from './pages'
+export default function App(){const[tasks,setTasks]=useState(initialTasks);const[videos,setVideos]=useState(initialVideos);const[notes,setNotes]=useState(initialNotes);const[reminders,setReminders]=useState(initialReminders);const[bookmarks,setBookmarks]=useState(initialBookmarks);return <Layout><Routes><Route path="/" element={<Dashboard {...{tasks,setTasks,videos,setVideos,reminders,setReminders}}/>}/><Route path="/tasks" element={<TasksPage {...{tasks,setTasks}}/>}/><Route path="/videos" element={<VideosPage {...{videos,setVideos}}/>}/><Route path="/notes" element={<NotesPage {...{notes,setNotes}}/>}/><Route path="/reminders" element={<RemindersPage {...{reminders,setReminders}}/>}/><Route path="/bookmarks" element={<BookmarksPage {...{bookmarks,setBookmarks}}/>}/><Route path="/settings" element={<SettingsPage/>}/></Routes></Layout>}
