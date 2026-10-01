@@ -4,7 +4,8 @@ import express from 'express'
 import { authRouter } from './auth.js'
 
 const app = express()
-app.use(cors({ origin: process.env.CLIENT_ORIGIN ?? 'http://localhost:5173' }))
+const allowedOrigins = (process.env.CLIENT_ORIGIN ?? 'http://localhost:5173,http://127.0.0.1:5173').split(',')
+app.use(cors({ origin: allowedOrigins }))
 app.use(express.json({ limit: '32kb' }))
 app.get('/api/health', (_request, response) => response.json({ status: 'ok' }))
 app.use('/api/auth', authRouter)
