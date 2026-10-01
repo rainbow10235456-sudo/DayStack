@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import { Router } from 'express'
+import { Router, type NextFunction, type Request, type Response } from 'express'
 import jwt from 'jsonwebtoken'
 import { randomUUID } from 'node:crypto'
 import { z } from 'zod'
@@ -19,6 +19,18 @@ const toPublicUser = (user: User) => ({ id: user.id, email: user.email, displayN
 const createToken = (user: User) => jwt.sign({ sub: user.id, email: user.email }, jwtSecret, { expiresIn: '7d' })
 
 export const authRouter = Router()
+export type AuthenticatedRequest = Request & { userId: string }
+
+export function requireAuth(request: Request, response: Response, next: NextFunction) {
+  try {
+    const token = request.header('authorization')?.replace(/^Bearer\s+/i, '')
+    if (!token) return response.status(401).json({ message: 'Authentication is required.' })
+    const claims = jwt.verify(token, jwtSecret!)
+    if (typeof claims === 'string' || !claims.sub) return response.status(401).json({ message: 'Invalid token.' })
+    ;(request as AuthenticatedRequest).userId = claims.sub
+    return next()
+  } catch { return response.status(401).json({ message: 'Your session is invalid or has expired.' }) }
+}
 
 authRouter.post('/register', async (request, response, next) => {
   try {

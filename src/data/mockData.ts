@@ -1,10 +1,10 @@
 import type { Bookmark, Note, Reminder, Task, Video } from '../types'
 export const tasks: Task[] = [
- { id: 1, title: 'Finish project proposal', description: 'Outline scope and deliverables for the new client project.', priority: 'High', category: 'Work', due: 'Today', time: '10:00 AM', completed: false },
- { id: 2, title: 'Morning workout', description: '30 minutes of strength training.', priority: 'Medium', category: 'Personal', due: 'Yesterday', time: '7:00 AM', completed: true },
- { id: 3, title: 'Reply to client emails', description: 'Clear the inbox before lunch.', priority: 'Medium', category: 'Work', due: 'Today', time: '1:00 PM', completed: false },
- { id: 4, title: 'Plan weekly meals', description: 'Create a grocery list and dinner plan.', priority: 'Low', category: 'Personal', due: 'Tomorrow', time: '6:00 PM', completed: false },
- { id: 5, title: 'Review design inspiration', description: 'Save useful dashboard patterns.', priority: 'Low', category: 'Work', due: 'Friday', time: '3:30 PM', completed: false },
+ { id: 1, title: 'Finish project proposal', description: 'Outline scope and deliverables for the new client project.', priority: 'High', category: 'Work', due: 'Today', dueDate: '2026-10-01', time: '10:00 AM', completed: false },
+ { id: 2, title: 'Morning workout', description: '30 minutes of strength training.', priority: 'Medium', category: 'Personal', due: 'Yesterday', dueDate: '2026-09-30', time: '7:00 AM', completed: true },
+ { id: 3, title: 'Reply to client emails', description: 'Clear the inbox before lunch.', priority: 'Medium', category: 'Work', due: 'Today', dueDate: '2026-10-01', time: '1:00 PM', completed: false },
+ { id: 4, title: 'Plan weekly meals', description: 'Create a grocery list and dinner plan.', priority: 'Low', category: 'Personal', due: 'Tomorrow', dueDate: '2026-10-02', time: '6:00 PM', completed: false },
+ { id: 5, title: 'Review design inspiration', description: 'Save useful dashboard patterns.', priority: 'Low', category: 'Work', due: 'Friday', dueDate: '2026-10-03', time: '3:30 PM', completed: false },
 ]
 export const videos: Video[] = [
  { id: 1, title: 'Build better habits with systems', source: 'YouTube', category: 'Productivity', saved: 'Today', favorite: true, color: 'from-violet-500 to-indigo-600' },
